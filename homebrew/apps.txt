@@ -1,0 +1,12 @@
+# list of apps (casks) for homebrew install
+iterm2
+visual-studio-code
+docker
+google-chrome
+firefox
+postman
+datagrip
+rectangle
+spotify
+
+# EOF
