@@ -106,13 +106,42 @@ source $ZSH/oh-my-zsh.sh
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 
+export SPOTIFY_ON=0
+
+if [ ! -f "$HOME/.spotify_status" ]
+then
+    touch ~/.spotify_status
+fi
+
+# aliases
+alias spotify_off="echo 0 > ~/.spotify_status && spotify quit"
+alias spotify_on="echo 1 > ~/.spotify_status && spotify play"
+
+# typewritten config
 export TYPEWRITTEN_COLOR_MAPPINGS="primary:blue"
 export TYPEWRITTEN_COLORS="arrow:yellow;symbol:yellow"
 export TYPEWRITTEN_PROMPT_LAYOUT="pure_verbose"
 export TYPEWRITTEN_SYMBOL="$"
 export TYPEWRITTEN_CURSOR="block"
 export TYPEWRITTEN_ARROW_SYMBOL="➜"
-export TYPEWRITTEN_LEFT_PROMPT_PREFIX_FUNCTION=(date +%H:%M:%S)
+
+read_spotify_status() {
+    if [ -f "$HOME/.spotify_status" ];
+    then
+        SPOTIFY_ON=$(cat ~/.spotify_status)
+    fi
+}
+get_prompt_prefix() {
+    read_spotify_status
+
+    if [ "$SPOTIFY_ON" -eq 1 ]
+    then 
+        echo "🎧: $(spotify status artist) - $(spotify status track)"
+    else
+        echo "⏱️: $(date +%H:%M:%S)"
+    fi    
+}
+export TYPEWRITTEN_LEFT_PROMPT_PREFIX_FUNCTION=get_prompt_prefix
 
 # init typewritten prompt
 autoload -U promptinit; promptinit
