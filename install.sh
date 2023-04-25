@@ -7,8 +7,9 @@ sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/too
 NONINTERACTIVE=1 /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
 
 # install commands w/homebrew
-# todo: add command to install list of commands here
+brew install $(cat homebrew/formulae.txt)
 
 # install apps w/homebrew
-# todo: add command to install list of apps (casks) here
+brew install --casks $(cat homebrew/casks.txt)
 
+# EOF

@@ -1,6 +1,0 @@
-# list of homebrew deps for installation
-stow
-typewritten
-nvm
-
-# EOF
