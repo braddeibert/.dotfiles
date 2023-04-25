@@ -74,6 +74,7 @@ plugins=(
   git
   nvm
   web-search
+  macos
   z
 )
 
