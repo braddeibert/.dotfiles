@@ -114,8 +114,8 @@ then
 fi
 
 # aliases
-alias spotify_off="echo 0 > ~/.spotify_status && spotify quit"
-alias spotify_on="echo 1 > ~/.spotify_status && spotify play"
+alias chill="echo 0 > ~/.spotify_status && spotify quit"
+alias turnup="echo 1 > ~/.spotify_status && spotify play"
 
 # typewritten config
 export TYPEWRITTEN_COLOR_MAPPINGS="primary:blue"
