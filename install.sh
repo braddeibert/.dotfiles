@@ -12,4 +12,7 @@ brew install $(cat homebrew/formulae.txt)
 # install apps w/homebrew
 brew install --casks $(cat homebrew/casks.txt)
 
+# stow directories (make symlinks to ~/)
+stow $(cat stow_dirs.txt)
+
 # EOF
