@@ -121,7 +121,7 @@ alias spotify_on="echo 1 > ~/.spotify_status && spotify play"
 export TYPEWRITTEN_COLOR_MAPPINGS="primary:blue"
 export TYPEWRITTEN_COLORS="arrow:yellow;symbol:yellow"
 export TYPEWRITTEN_PROMPT_LAYOUT="pure_verbose"
-export TYPEWRITTEN_SYMBOL="$"
+export TYPEWRITTEN_SYMBOL="#"
 export TYPEWRITTEN_CURSOR="block"
 export TYPEWRITTEN_ARROW_SYMBOL="➜"
 
