@@ -108,14 +108,9 @@ source $ZSH/oh-my-zsh.sh
 
 export SPOTIFY_ON=0
 
-if [ ! -f "$HOME/.spotify_status" ]
-then
-    touch ~/.spotify_status
-fi
-
 # aliases
-alias chill="echo 0 > ~/.spotify_status && spotify quit"
-alias turnup="echo 1 > ~/.spotify_status && spotify play"
+alias chill="spotify quit && killall -9 Spotify"
+alias turnup="spotify play"
 
 # typewritten config
 export TYPEWRITTEN_COLOR_MAPPINGS="primary:blue"
@@ -126,9 +121,11 @@ export TYPEWRITTEN_CURSOR="block"
 export TYPEWRITTEN_ARROW_SYMBOL="➜"
 
 read_spotify_status() {
-    if [ -f "$HOME/.spotify_status" ];
+    if [ $(ps aux | grep -c Applications/Spotify) -le 1 ]
     then
-        SPOTIFY_ON=$(cat ~/.spotify_status)
+        SPOTIFY_ON=0
+    else
+        SPOTIFY_ON=1
     fi
 }
 get_prompt_prefix() {
