@@ -1,8 +1,9 @@
 # .dotfiles
 my personal config for local development
-> :warning: ATTN: this repo is currently a work-in-progress. please use at your own discretion
 
 ## Getting started
+> :warning: ATTN: this repo is currently a work-in-progress. please use at your own discretion
+
 1. Fork/clone this repo
 2. Grant execute permissions to the install script (`chmod +x install.sh`)
 3. Run the script & follow prompts
