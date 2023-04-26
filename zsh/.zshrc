@@ -107,10 +107,22 @@ source $ZSH/oh-my-zsh.sh
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 
 export SPOTIFY_ON=0
+export USE_SPOTIFY_PROMPT=0
 
 # aliases
 alias chill="spotify quit && killall -9 Spotify"
-alias turnup="spotify play"
+alias turnup="spotify play && USE_SPOTIFY_PROMPT=1"
+prmpt() {
+    if [ "$1" = "spotify" ]
+    then
+        USE_SPOTIFY_PROMPT=1
+    fi
+
+    if [ "$1" = "time" ]
+    then 
+        USE_SPOTIFY_PROMPT=0
+    fi
+}
 
 # typewritten config
 export TYPEWRITTEN_COLOR_MAPPINGS="primary:blue"
@@ -131,7 +143,7 @@ read_spotify_status() {
 get_prompt_prefix() {
     read_spotify_status
 
-    if [ "$SPOTIFY_ON" -eq 1 ]
+    if [[ ( "$SPOTIFY_ON" -eq 1 ) && ( "$USE_SPOTIFY_PROMPT" -eq 1 ) ]]
     then 
         echo "🎧: $(spotify status artist) - $(spotify status track)"
     else
