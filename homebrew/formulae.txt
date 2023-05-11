@@ -1,3 +1,2 @@
 stow
-typewritten
 nvm

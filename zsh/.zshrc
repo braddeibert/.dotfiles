@@ -72,9 +72,6 @@ ZSH_THEME="robbyrussell"
 # Add wisely, as too many plugins slow down shell startup.
 plugins=(
   git
-  nvm
-  web-search
-  macos
   z
 )
 
@@ -105,56 +102,5 @@ source $ZSH/oh-my-zsh.sh
 # Example aliases
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
-
-export SPOTIFY_ON=0
-export USE_SPOTIFY_PROMPT=0
-
-# aliases
-alias chill="spotify quit && killall -9 Spotify"
-alias turnup="spotify play && USE_SPOTIFY_PROMPT=1"
-prmpt() {
-    if [ "$1" = "spotify" ]
-    then
-        USE_SPOTIFY_PROMPT=1
-    fi
-
-    if [ "$1" = "time" ]
-    then 
-        USE_SPOTIFY_PROMPT=0
-    fi
-}
-
-# typewritten config
-export TYPEWRITTEN_COLOR_MAPPINGS="primary:blue"
-export TYPEWRITTEN_COLORS="arrow:yellow;symbol:yellow"
-export TYPEWRITTEN_PROMPT_LAYOUT="pure_verbose"
-export TYPEWRITTEN_SYMBOL="#"
-export TYPEWRITTEN_CURSOR="block"
-export TYPEWRITTEN_ARROW_SYMBOL="➜"
-
-read_spotify_status() {
-    if [ $(ps aux | grep -c Applications/Spotify) -le 1 ]
-    then
-        SPOTIFY_ON=0
-    else
-        SPOTIFY_ON=1
-    fi
-}
-get_prompt_prefix() {
-    read_spotify_status
-
-    if [[ ( "$SPOTIFY_ON" -eq 1 ) && ( "$USE_SPOTIFY_PROMPT" -eq 1 ) ]]
-    then 
-        echo "🎧: $(spotify status artist) - $(spotify status track)"
-    else
-        echo "⏱️: $(date +%H:%M:%S)"
-    fi    
-}
-export TYPEWRITTEN_LEFT_PROMPT_PREFIX_FUNCTION=get_prompt_prefix
-
-# init typewritten prompt
-autoload -U promptinit; promptinit
-prompt typewritten
-
 
 # EOF

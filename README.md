@@ -18,7 +18,6 @@ The included `install.sh` does the following:
 2. Installs homebrew
 3. Uses homebrew to install the following commands:
   - stow
-  - typewritten
   - nvm
 4. Uses homebrew to install the following applications:
   - iterm2
